@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-os
+
+spec:
+ selector:
+   matchLabels: 
+     app: Sama
+ replicas: 3
+ template:
+   metadata:
+      name: my-web-pod
+      labels:
+       app: Sama
+
+   spec:
+     containers: 
+       - image: sama771/nginx-test
+         name: nginx-container
+         imagePullPolicy: IfNotPresent
+         ports:
+          - containerPort: 7101
